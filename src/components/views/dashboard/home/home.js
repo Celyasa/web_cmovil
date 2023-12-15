@@ -490,22 +490,28 @@ const Home = () => {
                 : contadorRecibo + contadorReciboTriangulo}
             </Grid>
             <Grid item xs={3}>
-              Eficiencia:{" "}
-              {contadorPedidos + contadorPedidosTriangulo == 0
-                ? 0
-                : Math.round(
-                    ((contadorPedidos +
-                      contadorPedidosTriangulo +
-                      contadorNovedades +
-                      contadorNovedadesTriangulo) *
-                      100) /
-                      (contadorPedidos +
-                        contadorPedidosTriangulo +
-                        contadorNovedades +
-                        contadorNovedadesTriangulo +
-                        locationsNoVisitados.length)
-                  )}{" "}
-              %
+              {parseInt(selectedValue) === 1 ? (
+                <div>
+                  Eficiencia:{" "}
+                  {contadorPedidos + contadorPedidosTriangulo == 0
+                    ? 0
+                    : Math.round(
+                        ((contadorPedidos +
+                          contadorPedidosTriangulo +
+                          contadorNovedades +
+                          contadorNovedadesTriangulo) *
+                          100) /
+                          (contadorPedidos +
+                            contadorPedidosTriangulo +
+                            contadorNovedades +
+                            contadorNovedadesTriangulo +
+                            locationsNoVisitados.length)
+                      )}{" "}
+                  %
+                </div>
+              ) : (
+                ""
+              )}
             </Grid>
 
             {/* Fila 2 */}
@@ -532,18 +538,24 @@ const Home = () => {
               Total Novedades: {contadorNovedades + contadorNovedadesTriangulo}
             </Grid>
             <Grid item xs={3}>
-              Efectividad:{" "}
-              {contadorPedidos + contadorPedidosTriangulo == 0
-                ? 0
-                : Math.round(
-                    ((contadorPedidos + contadorPedidosTriangulo) * 100) /
-                      (contadorPedidos +
-                        contadorPedidosTriangulo +
-                        contadorNovedades +
-                        contadorNovedadesTriangulo +
-                        locationsNoVisitados.length)
-                  )}{" "}
-              %
+              {parseInt(selectedValue) === 1 ? (
+                <div>
+                  Efectividad:{" "}
+                  {contadorPedidos + contadorPedidosTriangulo == 0
+                    ? 0
+                    : Math.round(
+                        ((contadorPedidos + contadorPedidosTriangulo) * 100) /
+                          (contadorPedidos +
+                            contadorPedidosTriangulo +
+                            contadorNovedades +
+                            contadorNovedadesTriangulo +
+                            locationsNoVisitados.length)
+                      )}{" "}
+                  %
+                </div>
+              ) : (
+                ""
+              )}
             </Grid>
 
             {/* Fila 3 */}
