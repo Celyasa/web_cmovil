@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+// import "./App.css";
+import { Route, Routes } from "react-router";
+import { ThemeProvider } from "@emotion/react";
+import { baseTheme } from "./assets/global/Theme";
+import LoginForm from "./components/views/LoginForm/loginForm";
+import Dashboard from "./components/views/dashboard/Dashboard";
+import Layout from "./components/Layout";
+import Missing from "./components/views/NoFound/Missing";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <ThemeProvider theme={theme}>{routing}</ThemeProvider>
+
+    <ThemeProvider theme={baseTheme}>
+      {/* <CssBaseline /> */}
+      <Routes>
+        <Route path="login" element={<LoginForm />} />
+        <Route path="/" element={<Layout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="*" element={<Missing />} />
+        </Route>
+      </Routes>
+    </ThemeProvider>
   );
 }
 
