@@ -251,7 +251,7 @@ const Home = () => {
             // const token =
             //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1Y21DbGllbnRlIjowLCJ1Y21Db2RpZ28iOjI2OTAwMTY3NzIsInVjbUNvbmZpZ3VyYSI6MCwidWNtRW1wcmVzYSI6MiwidWNtSWQiOiIwODQxIiwidWNtTm9tYnJlIjoiR0FMTEVHT1MgTUVORElFVEEgSk9ITiBTRUJBU1RJQU4iLCJ1Y21OdWV2YVZlcnNpb24iOiIyNyIsInVjbVNlcnZpZG9yIjoiY21vdmlsMi5jZWx5YXNhLmNvbSIsInVjbVZlcnNpb24iOiIyNyIsInVjbUluYWN0aXZvIjowLCJ1Y21Nb2R1bG8iOjEsInVjbUFnZUNvZGlnbyI6NDI1MDAxODU1MywidWNtQWxtQ29kaWdvIjo0MjUsImlhdCI6MTY5OTg5NzM5OCwiZXhwIjoxNzAyNDg5Mzk4fQ.iO_02690xXQTktzH67P6n87E-QIBoOPdQIpd-YfC8WA";
             const response = await fetch(
-              "http://localhost:5000/api/cmovilv3/usrcmovil/grafica/maps",
+              "http://backend.celyasa.com:5001/api/cmovilv3/usrcmovil/grafica/maps",
               {
                 method: "POST",
                 headers: {
