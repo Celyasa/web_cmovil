@@ -251,7 +251,9 @@ const Home = () => {
             // const token =
             //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1Y21DbGllbnRlIjowLCJ1Y21Db2RpZ28iOjI2OTAwMTY3NzIsInVjbUNvbmZpZ3VyYSI6MCwidWNtRW1wcmVzYSI6MiwidWNtSWQiOiIwODQxIiwidWNtTm9tYnJlIjoiR0FMTEVHT1MgTUVORElFVEEgSk9ITiBTRUJBU1RJQU4iLCJ1Y21OdWV2YVZlcnNpb24iOiIyNyIsInVjbVNlcnZpZG9yIjoiY21vdmlsMi5jZWx5YXNhLmNvbSIsInVjbVZlcnNpb24iOiIyNyIsInVjbUluYWN0aXZvIjowLCJ1Y21Nb2R1bG8iOjEsInVjbUFnZUNvZGlnbyI6NDI1MDAxODU1MywidWNtQWxtQ29kaWdvIjo0MjUsImlhdCI6MTY5OTg5NzM5OCwiZXhwIjoxNzAyNDg5Mzk4fQ.iO_02690xXQTktzH67P6n87E-QIBoOPdQIpd-YfC8WA";
             const response = await fetch(
-              "http://backend.celyasa.com:5001/api/cmovilv3/usrcmovil/grafica/maps",
+              // "http://backend.celyasa.com:5001/api/cmovilv3/usrcmovil/grafica/maps",
+              "http://localhost:5000/api/cmovilv3/usrcmovil/grafica/maps",
+
               {
                 method: "POST",
                 headers: {
@@ -386,14 +388,11 @@ const Home = () => {
       <CardContent sx={{ paddingBottom: "10px !important" }}>
         <Grid container spacing={2}>
           <Grid item xs={6} sm={3}>
-            <Autocomplete
+            {/* <Autocomplete
               id="medium-combo-box-demo"
               size="small"
               fullWidth
-              options={token.almacen}
-              // getOptionLabel={(option) => (
-              //   <span style={{ fontSize: "12px" }}>{option.ALM_NOMBRE}</span>
-              // )}
+              options={token.almacen || []} // Asegúrate de manejar el caso cuando token.almacen es nulo o indefinido
               getOptionLabel={(option) => option.ALM_NOMBRE}
               value={selectedOption}
               onChange={(_, newValue) => setSelectedOption(newValue)}
@@ -401,16 +400,52 @@ const Home = () => {
                 <TextField
                   {...params}
                   label="Almacén"
-                  // sx={{ fontSize: "19px" }}
                   InputLabelProps={{ style: { fontSize: "12px" } }}
+                  InputProps={{
+                    ...params.InputProps,
+                    style: { fontSize: "12px" },
+                  }} // Estilo para el tamaño de letra
                 />
               )}
               isOptionEqualToValue={(option, value) =>
                 option.UAG_ALMACEN === value.UAG_ALMACEN
               }
+              renderOption={(props, option) => (
+                <li {...props} style={{ fontSize: 12, padding: "5px" }}>
+                  {option.ALM_NOMBRE}
+                </li>
+              )}
+            /> */}
+            <Autocomplete
+              id="medium-combo-box-demo"
+              size="small"
+              fullWidth
+              options={token.almacen || []}
+              getOptionLabel={(option) => option.ALM_NOMBRE}
+              value={selectedOption}
+              onChange={(_, newValue) => setSelectedOption(newValue)}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Almacén"
+                  InputLabelProps={{ style: { fontSize: "12px" } }}
+                  InputProps={{
+                    ...params.InputProps,
+                    style: { fontSize: "12px" },
+                  }}
+                />
+              )}
+              isOptionEqualToValue={(option, value) =>
+                option.UAG_ALMACEN === value.UAG_ALMACEN
+              }
+              renderOption={(props, option) => (
+                <li {...props} style={{ fontSize: 12, padding: "5px" }}>
+                  {option.ALM_NOMBRE}
+                </li>
+              )}
             />
           </Grid>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={6} sm={4}>
             <Autocomplete
               id="medium-combo-box-demo"
               size="small"
@@ -427,11 +462,20 @@ const Home = () => {
                   {...params}
                   label="Agente"
                   InputLabelProps={{ style: { fontSize: "12px" } }}
+                  InputProps={{
+                    ...params.InputProps,
+                    style: { fontSize: "12px" },
+                  }}
                 />
               )}
               isOptionEqualToValue={(option, value) =>
                 option.ageCodigo === value.ageCodigo
               }
+              renderOption={(props, option) => (
+                <li {...props} style={{ fontSize: 12, padding: "5px" }}>
+                  {option.ageNombre}
+                </li>
+              )}
             />
           </Grid>
           <Grid item xs={6} sm={3}>
@@ -452,7 +496,7 @@ const Home = () => {
               onChange={handleDateChange}
             />
           </Grid>
-          <Grid item xs={6} sm={3}>
+          <Grid item xs={6} sm={1}>
             <Button variant="contained" onClick={filtrarInformacion}>
               Buscar
             </Button>

@@ -3,16 +3,6 @@ import Header from "./layouts/header/Header";
 import Sidebar from "./layouts/Sidebar/Sidebar";
 import { Box, Container, experimentalStyled } from "@mui/material";
 
-// const Layout = () => {
-//   return (
-//     <main className="App">
-//       <Outlet />
-//       {/* <Footer/> */}
-//     </main>
-//   );
-// };
-
-// export default Layout;
 const MainWrapper = experimentalStyled("div")(({ theme }) => ({
   display: "flex",
   minHeight: "100vh",
