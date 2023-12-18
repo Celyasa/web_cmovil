@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default axios.create({
-  // baseURL: "http://backend.celyasa.com:5001",
-  baseURL: "http://localhost:5000",
+  baseURL: "http://backend.celyasa.com:5001",
+  // baseURL: "http://localhost:5000",
 
   // withCredentials: true,
   // headers: { "Content-Type": "application/json" },
