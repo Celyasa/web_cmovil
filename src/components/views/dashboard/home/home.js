@@ -34,7 +34,6 @@ import { renderToString } from "react-dom/server";
 import axios from "../../../../api/axios";
 const Home = () => {
   const token = decodeJwt(localStorage.token);
-  // const [mapCenter, setMapCenter] = useState({ lat: -0.22985, lng: -78.52495 });
   const [mapKey, setMapKey] = useState(0);
   const limpiarUbicaciones = () => {
     setLocationsNoVisitados([]);
@@ -78,8 +77,6 @@ const Home = () => {
     setContadorFacturasTriangulo(0);
     setContadorRecibo(0);
     setContadorReciboTriangulo(0);
-    // setLocationsNoVisitados([]);
-    // setLocationsVisitados([]);
     limpiarUbicaciones();
   };
   const currentDate = new Date();
@@ -269,7 +266,6 @@ const Home = () => {
               }
             );
             if (response.ok) {
-              // console.log(selectedOptionAgente.ageCodigo);
               const data = await response.json();
               setLocationsVisitados(data.datosVisitadosMap);
               setLocationsNoVisitados(data.datosPendientesMap);
@@ -282,7 +278,6 @@ const Home = () => {
               setContadorFacturasTriangulo(0);
               setContadorRecibo(0);
               setContadorReciboTriangulo(0);
-              console.log(data.datosVisitadosMap);
               if (selectedValue == 1) {
                 data.datosVisitadosMap.forEach((item) => {
                   if (item.tipo === "PEDIDO") {
@@ -375,12 +370,6 @@ const Home = () => {
             label="Entrega"
             labelPlacement="end"
           />
-          {/* <FormControlLabel
-            value="televenta"
-            control={<Radio />}
-            label="Televenta"
-            labelPlacement="end"
-          /> */}
         </RadioGroup>
       </Box>
 
@@ -388,34 +377,6 @@ const Home = () => {
       <CardContent sx={{ paddingBottom: "10px !important" }}>
         <Grid container spacing={2}>
           <Grid item xs={6} sm={3}>
-            {/* <Autocomplete
-              id="medium-combo-box-demo"
-              size="small"
-              fullWidth
-              options={token.almacen || []} // Asegúrate de manejar el caso cuando token.almacen es nulo o indefinido
-              getOptionLabel={(option) => option.ALM_NOMBRE}
-              value={selectedOption}
-              onChange={(_, newValue) => setSelectedOption(newValue)}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Almacén"
-                  InputLabelProps={{ style: { fontSize: "12px" } }}
-                  InputProps={{
-                    ...params.InputProps,
-                    style: { fontSize: "12px" },
-                  }} // Estilo para el tamaño de letra
-                />
-              )}
-              isOptionEqualToValue={(option, value) =>
-                option.UAG_ALMACEN === value.UAG_ALMACEN
-              }
-              renderOption={(props, option) => (
-                <li {...props} style={{ fontSize: 12, padding: "5px" }}>
-                  {option.ALM_NOMBRE}
-                </li>
-              )}
-            /> */}
             <Autocomplete
               id="medium-combo-box-demo"
               size="small"
@@ -452,9 +413,6 @@ const Home = () => {
               fullWidth
               options={datos || []}
               getOptionLabel={(option) => option.ageNombre}
-              // getOptionLabel={(option) => (
-              //   <span style={{ fontSize: "12px" }}>{option.ageNombre}</span>
-              // )}
               value={selectedOptionAgente}
               onChange={(_, newValue) => setSelectedOptionAgente(newValue)}
               renderInput={(params) => (
