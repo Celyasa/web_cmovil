@@ -25,7 +25,7 @@ const Layout = () => {
   return (
     <MainWrapper>
       <Header />
-      <Sidebar />
+      <Side bar />
       <PageWrapper>
         <Container
           maxWidth={false}
